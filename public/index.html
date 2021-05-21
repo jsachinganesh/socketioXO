@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X-O</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootcss/bootstrap.min.css">
+	<script defer src="bootjs/fontawesome-all.min.js"></script>
+</head>
+<body>
+    
+    <div class="container  ">
+        <h1 class="text-center mt-4">X - O</h1>
+        <div class="border gameBox container position-relative">
+            <div data-number="0" class="box"></div>
+            <div data-number="1" class="box"></div>
+            <div data-number="2" class="box"></div>
+            <div data-number="3" class="box"></div>
+            <div data-number="4" class="box"></div>
+            <div data-number="5" class="box"></div>
+            <div data-number="6" class="box"></div>
+            <div data-number="7" class="box"></div>
+            <div data-number="8" class="box"></div>
+            <div class="alert alert-danger error d-none" role="alert">
+                Can't place your move on that Box
+            </div>
+            <div class="alert alert-primary win d-none" role="alert">
+                Can't place your move on that Box
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="bootjs/bootstrap.bundle.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>

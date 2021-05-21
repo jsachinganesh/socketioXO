@@ -1,0 +1,53 @@
+*,
+*::before,
+*::after {
+box-sizing: border-box;
+padding:0;
+margin:0;
+}
+
+.gameBox{
+    width: 500px !important;
+    height: 390px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    background-color: red;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    padding: 3.5rem;
+    margin: 0.5rem;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: aquamarine;
+}
+
+.box h1{
+    font-size: 4rem;
+}
+
+.error{
+    width: 300px;
+    position: absolute !important;
+    top: 40%;
+    left: 20%;
+}
+.win{
+    width: 300px;
+    position: absolute !important;
+    top: 40%;
+    left: 20%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
