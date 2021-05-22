@@ -10,6 +10,48 @@ let XS = [];
 let OS = [];
 playSocket.on('messListen',(data)=>{
     console.log(data);
+    const box = document.querySelector(`[data-number="${data.data}"]`)
+    if(box){
+        const dataNumber = data.data * 1;
+        box.innerHTML = `<h1>${XorO}</h1>`;
+    let temp = XorO;
+        if(XorO==='X'){
+            XS.push(dataNumber);
+            XorO = 'O'
+        }else{
+            OS.push(dataNumber);
+            XorO = 'X'
+        }
+        if(checkWin(temp)){
+            removeListener()
+            
+            win.innerText = `${temp} Won the Game`;
+            
+            win.innerHTML = `
+                <div>${temp} Won the Game</div>
+                <button class="btn replay">Replay</button>
+            `;
+            win.classList.remove('d-none');
+            btn = document.querySelector('.replay');
+            close()
+            
+        }
+        if(!draw()){
+            console.log('draw');
+            removeListener()
+        
+            
+            win.innerHTML = `
+                <div>Draw Game</div>
+                <button class="btn replay">Replay</button>
+            `;
+            win.classList.remove('d-none');
+            btn = document.querySelector('.replay');
+            close()
+        }
+
+    }
+    console.log(`${XS} | ${OS}`);
 })
 
 const winCombos = [
@@ -78,6 +120,7 @@ function resetGame(){
     addListeners();
     win.classList.add('d-none');
     btn.removeEventListener('click',resetGame);
+    XorO = 'X'
 }
 
 function removeListener(){
@@ -96,43 +139,9 @@ function close(){
 function boxAdd(e){
     const dataNumber = e.target.getAttribute('data-number') * 1;
     if(!(e.target.innerText === 'X' || e.target.innerText === 'O')){ 
-        e.target.innerHTML = `<h1>${XorO}</h1>`;
+        // e.target.innerHTML = `<h1>${XorO}</h1>`;
         playSocket.emit('move',{data:dataNumber})
-        let temp = XorO;
-        if(XorO==='X'){
-            XS.push(dataNumber);
-            XorO = 'O'
-        }else{
-            OS.push(dataNumber);
-            XorO = 'X'
-        }
-        if(checkWin(temp)){
-            removeListener()
-            
-            win.innerText = `${temp} Won the Game`;
-            
-            win.innerHTML = `
-                <div>${temp} Won the Game</div>
-                <button class="btn replay">Replay</button>
-            `;
-            win.classList.remove('d-none');
-            btn = document.querySelector('.replay');
-            close()
-            
-        }
-        if(!draw()){
-            console.log('draw');
-            removeListener()
         
-            
-            win.innerHTML = `
-                <div>Draw Game</div>
-                <button class="btn replay">Replay</button>
-            `;
-            win.classList.remove('d-none');
-            btn = document.querySelector('.replay');
-            close()
-        }
     }else{
         alert.classList.remove('d-none');
         setTimeout(()=>{
